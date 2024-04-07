@@ -14,9 +14,7 @@ export const metadata = {
 export default function RootLayout({ children, searchParams }) {
   return (
     <html lang="en" suppressHydrationWarning className={``}>
-      <body
-        className={`${inter.className} dark:bg-the-black dark:text-white bg-white text-the-black`}
-      >
+      <body className={`${inter.className}  text-base font-normal `}>
         <Providers>
           <Navbar />
           <>{children}</>

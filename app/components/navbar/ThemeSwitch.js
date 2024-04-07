@@ -12,7 +12,7 @@ function ThemeSwitch() {
 
   if (!mounted)
     return (
-        <Icon icon="akar-icons:box" className="text-2xl text-white invisible" />
+        <Icon icon="akar-icons:box" className="text-2xl text-white invisible mr-4" />
     );
 
   if (resolvedTheme === "light") {
@@ -20,7 +20,7 @@ function ThemeSwitch() {
       <Icon
         onClick={() => setTheme("dark")}
         icon="bi:moon-fill"
-        className="text-gray-600 text-2xl cursor-pointer"
+        className="mr-4 text-gray-600 text-2xl cursor-pointer"
       />
     );
   }
@@ -30,7 +30,7 @@ function ThemeSwitch() {
       <Icon
         onClick={() => setTheme("light")}
         icon="game-icons:sun"
-        className="text-the-blue text-2xl cursor-pointer"
+        className="mr-4 text-the-blue text-2xl cursor-pointer"
       />
     );
   }

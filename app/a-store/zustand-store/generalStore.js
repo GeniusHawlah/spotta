@@ -5,7 +5,7 @@ export const generalStore = create((set) => {
     // user: { phone: "9078787646" },
     // setUser: (user) => set(() => ({ user: user })),
 
-    darkMode: false,
-    setDarkMode: (value) => set(() => ({ darkMode: value })),
+    isLoggedIn: false,
+    setIsLoggedIn: (value) => set(() => ({ isLoggedIn: value })),
   };
 });
