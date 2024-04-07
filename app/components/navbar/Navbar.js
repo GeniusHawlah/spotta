@@ -13,7 +13,7 @@ function Navbar() {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
   return (
-    <nav className="gen-padding h-20 bg-pry-color text-the-black dark:text-white flex py-2 justify-between items-center mt-5 sm:mt-6 ">
+    <nav className="gen-padding   flex py-2 justify-between items-center mt-5 sm:mt-6 ">
       <Logo />
       <div className="flex justify-between items-center">
         <div className="flex justify-between items-center relative ">

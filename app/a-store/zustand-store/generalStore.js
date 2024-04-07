@@ -7,5 +7,17 @@ export const generalStore = create((set) => {
 
     isLoggedIn: false,
     setIsLoggedIn: (value) => set(() => ({ isLoggedIn: value })),
+
+    searchTerm: "",
+    setSearchTerm: (value) => set(() => ({ searchTerm: value })),
+
+    addressList: [],
+    setAddressList: (value) => set(() => ({ addressList: value })),
+
+    reviews: [],
+    setReviews: (value) => set(() => ({ reviews: value })),
+
+    searchSuggestions: [],
+    setSearchSuggestions: (value) => set((state) => ({ searchSuggestions: value })),
   };
 });

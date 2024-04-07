@@ -16,11 +16,11 @@
 
 body {
   /* color :#1E1E1E; */
-  /* background: white */
+  /* background: red */
 }
 
 .gen-padding {
-  @apply px-[18px] md:px-[30px] lg:px-[80px] xl:px-[100px]
+  @apply px-[18px] md:px-[30px] lg:px-[80px] xl:px-[100px] 
 }
 
 
