@@ -1,9 +1,13 @@
 "use client";
 import { generalStore } from "@/app/a-store/zustand-store/generalStore";
 import { Icon } from "@iconify-icon/react";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import secureLocalStorage from "react-secure-storage";
 
 function SearchWithoutButton() {
+  const router = useRouter();
+
   const {
     reviews,
     setReviews,
@@ -15,6 +19,7 @@ function SearchWithoutButton() {
     isLoggedIn,
     setFocusedSearchBar,
     focusedSearchBar,
+    setSelectedAddress,
   } = generalStore();
 
   function onChange(e) {
@@ -32,16 +37,13 @@ function SearchWithoutButton() {
     });
     setSearchSuggestions(filteredAddresses);
   }
-  {
-    /**
-     * Used to ensure the suggestions dont trigger when the other input field is being used.
-     */
-  }
-  const [isFocused, setIsFocused] = useState(false);
 
-  function pickAddress(selectedAddress) {
-    setSearchTerm(selectedAddress);
+  function pickAddress(addressText, addressObject) {
+    setSearchTerm(addressText);
     setSearchSuggestions([]);
+    router.push("/reviews");
+    setSelectedAddress(addressObject);
+    secureLocalStorage.setItem("selectedAddress", addressObject);
   }
 
   return (
@@ -54,8 +56,6 @@ function SearchWithoutButton() {
       <div className="px-3 py-1 rounded bg-white dark:bg-[#242428] border dark:border-none border-purple-200 flex items-center ">
         <Icon icon="carbon:search" className="text-base" />
         <input
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
           autoComplete="true"
           onChange={(e) => {
             onChange(e);
@@ -82,7 +82,15 @@ function SearchWithoutButton() {
         <div className="absolute top-12 max-h-60 scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-w-1 scrollbar-rounded-md overflow-y-auto ">
           {searchSuggestions.map((address) => (
             <p
-              onClick={() => pickAddress(address.address)}
+              onTouchStart={() => {
+                setSelectedAddress(address);
+                secureLocalStorage.setItem("selectedAddress", address);
+              }}
+              onMouseOver={() => {
+                setSelectedAddress(address);
+                secureLocalStorage.setItem("selectedAddress", address);
+              }}
+              onClick={() => pickAddress(address.address, address)}
               className="px-3 py-3 bg-[#e5f0fd] w-full cursor-pointer shadow dark:shadow-gray-50 dark:text-white dark:dark:bg-[#242428]"
               key={address.id}
             >

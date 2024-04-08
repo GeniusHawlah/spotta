@@ -2,6 +2,7 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import { Providers } from "./providers";
+import SearchWithoutButton from "./components/landing-page/SearchWithoutButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,9 @@ export default function RootLayout({ children, searchParams }) {
       >
         <Providers>
           <Navbar />
+          <div className="md:hidden w-full md:w-[80%] flex items-center justify-center gen-padding">
+        <SearchWithoutButton />
+      </div>
           <>{children}</>
         </Providers>
       </body>

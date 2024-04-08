@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { ADDRESSES } from "../content-store/content-store";
 
 export const generalStore = create((set) => {
   return {
@@ -8,17 +9,18 @@ export const generalStore = create((set) => {
     isLoggedIn: false,
     setIsLoggedIn: (value) => set(() => ({ isLoggedIn: value })),
 
+    showProfileDropdown: false,
+    setShowProfileDropdown: (value) =>
+      set(() => ({ showProfileDropdown: value })),
+
     searchTerm: "",
     setSearchTerm: (value) => set(() => ({ searchTerm: value })),
 
     focusedSearchBar: "landing",
     setFocusedSearchBar: (value) => set(() => ({ focusedSearchBar: value })),
 
-    addressList: [],
+    addressList: ADDRESSES,
     setAddressList: (value) => set(() => ({ addressList: value })),
-
-    reviews: [],
-    setReviews: (value) => set(() => ({ reviews: value })),
 
     searchSuggestions: [],
     setSearchSuggestions: (value) => set(() => ({ searchSuggestions: value })),

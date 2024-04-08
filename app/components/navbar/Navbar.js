@@ -18,8 +18,9 @@ function Navbar() {
     addressList,
     setAddressList,
     setSelectedAddress,
+    showProfileDropdown,
+    setShowProfileDropdown,
   } = generalStore();
-  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
   // //>To persist the login state and other data
   useEffect(() => {
@@ -39,7 +40,10 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="gen-padding z-[4000000]  flex py-2 justify-between items-center mt-5 sm:mt-6 gap-x-12">
+    <nav
+      onClick={() => setShowProfileDropdown(false)}
+      className="gen-padding z-[4000000]  flex py-2 justify-between items-center mt-5 sm:mt-6 gap-x-12"
+    >
       <Logo />
 
       <div className="flex justify-end md:justify-between items-center w-full  z-40 gap-x-12">
@@ -68,7 +72,8 @@ function Navbar() {
                   Welcome!
                 </span>{" "}
                 <Image
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setShowProfileDropdown(!showProfileDropdown);
                   }}
                   className="cursor-pointer"
@@ -80,9 +85,7 @@ function Navbar() {
               </div>
             )}
           </div>
-          {isLoggedIn && showProfileDropdown && (
-            <ProfileDropdown setIsLoggedIn={setIsLoggedIn} />
-          )}
+          {isLoggedIn && showProfileDropdown && <ProfileDropdown />}
         </div>
       </div>
     </nav>

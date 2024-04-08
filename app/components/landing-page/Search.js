@@ -35,14 +35,12 @@ function Search() {
     setSearchSuggestions(filteredAddresses);
   }
 
- 
-
   function pickAddress(addressText, addressObject) {
     setSearchTerm(addressText);
-    setSelectedAddress(addressObject);
-    secureLocalStorage.setItem("selectedAddress", selectedAddress);
     setSearchSuggestions([]);
     router.push("/reviews");
+    setSelectedAddress(addressObject);
+    secureLocalStorage.setItem("selectedAddress", addressObject);
   }
 
   return (
@@ -85,6 +83,14 @@ function Search() {
         <div className="absolute top-12 max-h-60 scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-w-1 scrollbar-rounded-md overflow-y-auto ">
           {searchSuggestions.map((address) => (
             <p
+              onTouchStart={() => {
+                setSelectedAddress(address);
+                secureLocalStorage.setItem("selectedAddress", address);
+              }}
+              onMouseOver={() => {
+                setSelectedAddress(address);
+                secureLocalStorage.setItem("selectedAddress", address);
+              }}
               onClick={() => pickAddress(address.address, address)}
               className="px-3 py-3 bg-[#e5f0fd] w-full cursor-pointer shadow dark:shadow-gray-50 dark:text-white dark:dark:bg-[#242428]"
               key={address.id}

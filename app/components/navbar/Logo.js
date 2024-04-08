@@ -5,8 +5,10 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import logo from "@/public/images/logo.svg";
 import logoDark from "@/public/images/logo-dark.svg";
+import { useRouter } from "next/navigation";
 
 function Logo() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
   useEffect(() => setMounted(true), []);
@@ -17,12 +19,24 @@ function Logo() {
     );
 
   if (resolvedTheme === "light") {
-    return <Image src={logo} alt="Spotta Logo" className="cursor-pointer" />;
+    return (
+      <Image
+        onClick={() => router.push("/")}
+        src={logo}
+        alt="Spotta Logo"
+        className="cursor-pointer"
+      />
+    );
   }
 
   if (resolvedTheme === "dark") {
     return (
-      <Image src={logoDark} alt="Spotta Logo" className="cursor-pointer" />
+      <Image
+        onClick={() => router.push("/")}
+        src={logoDark}
+        alt="Spotta Logo"
+        className="cursor-pointer"
+      />
     );
   }
 }
