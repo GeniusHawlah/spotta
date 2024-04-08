@@ -74,7 +74,9 @@ function Search() {
         />
       </div>
 
-      <button className="px-10 py-4 bg-the-blue rounded mt-3 md:mt-5 text-white hover:bg-opacity-80 duration-400">
+      <button onClick={() => {
+        router.push("/reviews")
+      }} className="px-10 py-4 bg-the-blue rounded mt-3 md:mt-5 text-white hover:bg-opacity-80 duration-400">
         SEARCH
       </button>
 

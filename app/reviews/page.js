@@ -1,16 +1,29 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { generalStore } from "../a-store/zustand-store/generalStore";
 import { Icon } from "@iconify-icon/react";
 import GroupOfButtons from "./GroupOfButtons";
 import Amenities from "./Amenities";
 import ReviewList from "./ReviewList";
+import SearchWithoutButton from "../components/landing-page/SearchWithoutButton";
+import InvalidAddress from "./InvalidAddress";
+import NoReview from "./NoReview";
+import Loading from "../loading";
 
 function Reviews() {
   const { selectedAddress, setShowProfileDropdown } = generalStore();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <div onClick={() => setShowProfileDropdown(false)} className="gen-padding">
+      {selectedAddress?.address && (
+        <div className="md:hidden w-full md:w-[80%] flex items-center justify-center gen-padding">
+          <SearchWithoutButton />
+        </div>
+      )}
       <div className="mt-4 flex justify-between items-center">
         {/* //>Address details */}
         {selectedAddress?.address && (
@@ -21,9 +34,9 @@ function Reviews() {
             <p className="mt-1">
               <span className="text-xs sm:text-base font-semibold">{`"${selectedAddress?.reviews?.length}"`}</span>{" "}
               <span className="font-medium text-xs sm:text-base">Reviews</span>{" "}
-              <span className="">
+              {/* <span className="font-medium text-xs sm:text-base">
                 (People are raving about the selected location)
-              </span>
+              </span> */}
             </p>
           </div>
         )}
@@ -49,9 +62,13 @@ function Reviews() {
 
       {selectedAddress?.address && (
         <div>
-          <ReviewList />
+          {loading && <Loading/>}
+          {selectedAddress?.reviews?.length > 0 && <ReviewList />}
+          {selectedAddress?.reviews?.length === 0 && !loading && <NoReview />}
         </div>
       )}
+
+      {!selectedAddress?.address && !loading && <InvalidAddress />}
     </div>
   );
 }

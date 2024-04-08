@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import { Providers } from "./providers";
 import SearchWithoutButton from "./components/landing-page/SearchWithoutButton";
+import TransparentOverlay from "./components/general-components/TransparentOverlay";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,12 @@ export default function RootLayout({ children, searchParams }) {
   return (
     <html lang="en" suppressHydrationWarning className={``}>
       <body
-        className={`${inter.className}  text-base font-normal bg-smoke dark:bg-the-black text-the-black dark:text-white`}
+        className={`${inter.className}  text-base font-normal bg-smoke dark:bg-[#171717] text-the-black dark:text-white`}
       >
         <Providers>
+          <TransparentOverlay />
           <Navbar />
-          <div className="md:hidden w-full md:w-[80%] flex items-center justify-center gen-padding">
-        <SearchWithoutButton />
-      </div>
+
           <>{children}</>
         </Providers>
       </body>
