@@ -11,6 +11,9 @@ export const generalStore = create((set) => {
     searchTerm: "",
     setSearchTerm: (value) => set(() => ({ searchTerm: value })),
 
+    focusedSearchBar: "landing",
+    setFocusedSearchBar: (value) => set(() => ({ focusedSearchBar: value })),
+
     addressList: [],
     setAddressList: (value) => set(() => ({ addressList: value })),
 
@@ -18,6 +21,9 @@ export const generalStore = create((set) => {
     setReviews: (value) => set(() => ({ reviews: value })),
 
     searchSuggestions: [],
-    setSearchSuggestions: (value) => set((state) => ({ searchSuggestions: value })),
+    setSearchSuggestions: (value) => set(() => ({ searchSuggestions: value })),
+
+    selectedAddress: {},
+    setSelectedAddress: (value) => set(() => ({ selectedAddress: value })),
   };
 });

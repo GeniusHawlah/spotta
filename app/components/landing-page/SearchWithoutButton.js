@@ -1,22 +1,20 @@
 "use client";
 import { generalStore } from "@/app/a-store/zustand-store/generalStore";
 import { Icon } from "@iconify-icon/react";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import secureLocalStorage from "react-secure-storage";
 
-function Search() {
-  const router = useRouter();
+function SearchWithoutButton() {
   const {
+    reviews,
+    setReviews,
     searchTerm,
     addressList,
     setSearchTerm,
     setSearchSuggestions,
     searchSuggestions,
-    setSelectedAddress,
-    focusedSearchBar,
+    isLoggedIn,
     setFocusedSearchBar,
-    selectedAddress,
+    focusedSearchBar,
   } = generalStore();
 
   function onChange(e) {
@@ -34,27 +32,30 @@ function Search() {
     });
     setSearchSuggestions(filteredAddresses);
   }
+  {
+    /**
+     * Used to ensure the suggestions dont trigger when the other input field is being used.
+     */
+  }
+  const [isFocused, setIsFocused] = useState(false);
 
- 
-
-  function pickAddress(addressText, addressObject) {
-    setSearchTerm(addressText);
-    setSelectedAddress(addressObject);
-    secureLocalStorage.setItem("selectedAddress", selectedAddress);
+  function pickAddress(selectedAddress) {
+    setSearchTerm(selectedAddress);
     setSearchSuggestions([]);
-    router.push("/reviews");
   }
 
   return (
     <div
-      onTouchStart={() => setFocusedSearchBar("landing")}
-      onMouseOver={() => setFocusedSearchBar("landing")}
-      onClick={() => setFocusedSearchBar("landing")}
-      className="mt-10 relative"
+      onTouchStart={() => setFocusedSearchBar("nav")}
+      onMouseOver={() => setFocusedSearchBar("nav")}
+      onClick={() => setFocusedSearchBar("nav")}
+      className="w-full relative"
     >
-      <div className="px-3 py-1 rounded bg-[#f3f7fe] dark:bg-[#242428] border dark:border-none border-purple-200 flex items-center ">
+      <div className="px-3 py-1 rounded bg-white dark:bg-[#242428] border dark:border-none border-purple-200 flex items-center ">
         <Icon icon="carbon:search" className="text-base" />
         <input
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           autoComplete="true"
           onChange={(e) => {
             onChange(e);
@@ -62,7 +63,7 @@ function Search() {
           value={searchTerm}
           type="text"
           id="address"
-          className="w-full bg-[#f3f7fe] dark:bg-[#242428] focus:ring-0 border-0"
+          className="w-full bg-white dark:bg-[#242428] focus:ring-0 border-0"
           placeholder="Enter Address"
         />
 
@@ -76,16 +77,12 @@ function Search() {
         />
       </div>
 
-      <button className="px-10 py-4 bg-the-blue rounded mt-3 md:mt-5 text-white hover:bg-opacity-80 duration-400">
-        SEARCH
-      </button>
-
       {/* //> Search suggestions */}
-      {focusedSearchBar === "landing" && (
+      {focusedSearchBar === "nav" && (
         <div className="absolute top-12 max-h-60 scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-100 scrollbar-w-1 scrollbar-rounded-md overflow-y-auto ">
           {searchSuggestions.map((address) => (
             <p
-              onClick={() => pickAddress(address.address, address)}
+              onClick={() => pickAddress(address.address)}
               className="px-3 py-3 bg-[#e5f0fd] w-full cursor-pointer shadow dark:shadow-gray-50 dark:text-white dark:dark:bg-[#242428]"
               key={address.id}
             >
@@ -98,4 +95,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default SearchWithoutButton;
