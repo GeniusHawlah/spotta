@@ -2,7 +2,7 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import { Providers } from "./providers";
-import SearchWithoutButton from "./components/landing-page/SearchWithoutButton";
+import SearchWithoutButton from "./components/navbar/SearchWithoutButton";
 import TransparentOverlay from "./components/general-components/TransparentOverlay";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -35,6 +35,30 @@ function Search() {
     setSearchSuggestions(filteredAddresses);
   }
 
+  function onSearchClicked() {
+    let filteredAddresses;
+    if (!searchTerm || searchTerm.trim() === "") {
+      filteredAddresses = [];
+    } else {
+      filteredAddresses = addressList.filter((item) => {
+        const address = item.address.toLowerCase();
+        const searchWords = searchTerm.toLowerCase().split(" ");
+        return searchWords.some((word) => address.includes(word));
+      });
+     
+    }
+
+    if (filteredAddresses.length > 0) {
+      setSelectedAddress(filteredAddresses[0]);
+      secureLocalStorage.setItem("selectedAddress", filteredAddresses[0]);
+    } else {
+      setSelectedAddress({});
+      secureLocalStorage.setItem("selectedAddress", {});
+    }
+
+    router.push("/reviews");
+  }
+
   function pickAddress(addressText, addressObject) {
     setSearchTerm(addressText);
     setSearchSuggestions([]);
@@ -74,9 +98,12 @@ function Search() {
         />
       </div>
 
-      <button onClick={() => {
-        router.push("/reviews")
-      }} className="px-10 py-4 bg-the-blue rounded mt-3 md:mt-5 text-white hover:bg-opacity-80 duration-400">
+      <button
+        onClick={() => {
+          onSearchClicked();
+        }}
+        className="px-10 py-4 bg-the-blue rounded mt-3 md:mt-5 text-white hover:bg-opacity-80 duration-400"
+      >
         SEARCH
       </button>
 

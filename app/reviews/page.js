@@ -5,7 +5,7 @@ import { Icon } from "@iconify-icon/react";
 import GroupOfButtons from "./GroupOfButtons";
 import Amenities from "./Amenities";
 import ReviewList from "./ReviewList";
-import SearchWithoutButton from "../components/landing-page/SearchWithoutButton";
+import SearchWithoutButton from "../components/navbar/SearchWithoutButton";
 import InvalidAddress from "./InvalidAddress";
 import NoReview from "./NoReview";
 import Loading from "../loading";
@@ -62,7 +62,7 @@ function Reviews() {
 
       {selectedAddress?.address && (
         <div>
-          {loading && <Loading/>}
+          {loading && <Loading />}
           {selectedAddress?.reviews?.length > 0 && <ReviewList />}
           {selectedAddress?.reviews?.length === 0 && !loading && <NoReview />}
         </div>

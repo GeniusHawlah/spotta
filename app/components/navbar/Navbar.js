@@ -7,7 +7,7 @@ import { generalStore } from "@/app/a-store/zustand-store/generalStore";
 import ThemeSwitch from "./ThemeSwitch";
 import Logo from "./Logo";
 import ProfileDropdown from "./ProfileDropdown";
-import SearchWithoutButton from "../landing-page/SearchWithoutButton";
+import SearchWithoutButton from "./SearchWithoutButton";
 import secureLocalStorage from "react-secure-storage";
 import { ADDRESSES } from "@/app/a-store/content-store/content-store";
 
