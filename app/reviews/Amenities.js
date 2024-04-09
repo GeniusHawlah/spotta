@@ -33,7 +33,7 @@ function Amenities() {
               {amenity}
             </button>
           </div>
-        ))}
+        )).reverse()}
       </div>
       <div className="flex cursor-pointer items-center bg-transparent ">
         {" "}

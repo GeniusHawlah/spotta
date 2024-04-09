@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React from "react";
 import reviewMockup from "@/public/images/review_mockup.png";
@@ -14,6 +14,7 @@ function Right() {
     return (
       <div className="hidden   lg:flex  lg:w-[55%]   dark:text-white items- justify-end invisible ">
         <Image
+          priority
           width={504}
           height={1024}
           src={"/images/review_mockup.png"}
@@ -27,6 +28,7 @@ function Right() {
     return (
       <div className="hidden   lg:flex  lg:w-[55%]   dark:text-white items- justify-end ">
         <Image
+          priority
           width={504}
           height={1024}
           src={"/images/review_mockup.png"}

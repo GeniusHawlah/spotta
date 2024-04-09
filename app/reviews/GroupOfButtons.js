@@ -1,11 +1,17 @@
 "use client";
 import { Icon } from "@iconify-icon/react";
 import React from "react";
+import { generalStore } from "../a-store/zustand-store/generalStore";
 
 function GroupOfButtons() {
+const {setShowPostReviewOverlay} = generalStore()
+
   return (
     <div className="flex items-center gap-x-4">
-      <button className="px-10 py-3 bg-the-blue rounded text-white hover:bg-opacity-80 duration-400 whitespace-nowrap text-sm sm:text-base font-medium">
+      <button
+        onClick={() => setShowPostReviewOverlay(true)}
+        className="px-10 py-3 bg-the-blue rounded text-white hover:bg-opacity-80 duration-400 whitespace-nowrap text-sm sm:text-base font-medium"
+      >
         LEAVE A REVIEW
       </button>
 

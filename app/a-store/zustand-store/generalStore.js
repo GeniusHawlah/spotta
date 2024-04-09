@@ -9,6 +9,9 @@ export const generalStore = create((set) => {
     isLoggedIn: false,
     setIsLoggedIn: (value) => set(() => ({ isLoggedIn: value })),
 
+    showPostReviewOverlay: false,
+    setShowPostReviewOverlay: (value) => set(() => ({ showPostReviewOverlay: value })),
+
     showProfileDropdown: false,
     setShowProfileDropdown: (value) =>
       set(() => ({ showProfileDropdown: value })),

@@ -4,6 +4,8 @@ import Navbar from "./components/navbar/Navbar";
 import { Providers } from "./providers";
 import SearchWithoutButton from "./components/navbar/SearchWithoutButton";
 import TransparentOverlay from "./components/general-components/TransparentOverlay";
+import PostReviewOverlay from "./reviews/PostReviewOverlay";
+import Toast from "./components/general-components/Toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +22,9 @@ export default function RootLayout({ children, searchParams }) {
         className={`${inter.className}  text-base font-normal bg-smoke dark:bg-[#171717] text-the-black dark:text-white`}
       >
         <Providers>
+          <Toast/>
           <TransparentOverlay />
+          <PostReviewOverlay/>
           <Navbar />
 
           <>{children}</>

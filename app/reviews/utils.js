@@ -1,0 +1,20 @@
+export const toastOptions = {
+  position: "top-center",
+  reverseOrder: false,
+  gutter: 8,
+  containerClassName: "",
+  containerStyle: {},
+  duration: 3000,
+  className: " ",
+  style: {
+    color: "#1ee510",
+    fontSize: "0.875rem",
+    fontWeight: "500",
+    paddingLeft: " 6rem",
+    paddingRight: "6rem",
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
+    background: "#f2fdf2",
+    borderColor: "#053c26",
+  },
+};

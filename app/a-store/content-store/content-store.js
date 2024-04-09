@@ -1,4 +1,4 @@
-const amenities = [
+export const amenities = [
   "School",
   "Hospital",
   "Shopping Malls",

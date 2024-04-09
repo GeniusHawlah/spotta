@@ -2,6 +2,8 @@ import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { generalStore } from "../a-store/zustand-store/generalStore";
+import toast from "react-hot-toast";
+import { toastOptions } from "./utils";
 
 function ReviewItem() {
   const [selectedReviewID, setSelectedReviewID] = useState();
@@ -33,7 +35,7 @@ function ReviewItem() {
   return (
     <div>
       {selectedAddress.reviews.map((review, i) => (
-        <div
+        <div 
           key={review?.id}
           onMouseOver={() => setSelectedReviewID(review?.id)}
           onTouchStart={() => setSelectedReviewID(review?.id)}
