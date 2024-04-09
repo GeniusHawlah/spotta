@@ -83,11 +83,11 @@ function SearchWithoutButton() {
                 setSelectedAddress(address);
                 secureLocalStorage.setItem("selectedAddress", address);
               }}
-              onMouseOver={() => {
+              onClick={() => {
                 setSelectedAddress(address);
                 secureLocalStorage.setItem("selectedAddress", address);
+                pickAddress(address.address, address);
               }}
-              onClick={() => pickAddress(address.address, address)}
               className="px-3 py-3 bg-[#e5f0fd] w-full cursor-pointer shadow dark:shadow-gray-50 dark:text-white dark:dark:bg-[#242428]"
               key={address.id}
             >
