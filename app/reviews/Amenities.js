@@ -25,15 +25,17 @@ function Amenities() {
         ref={scrollRef}
         className="flex scroll-smooth  overflow-x-scroll justify-between items-center scrollbar-hide gap-x-2 "
       >
-        {selectedAddress?.amenities?.map((amenity, i) => (
-          <div className="  relative " key={amenity}>
-            <button
-              className={`px-2 py-1 cursor-pointer rounded select-none whitespace-nowrap bg-white dark:bg-[#242428] border  dark:border dark:border-gray-500 text-sm font-normal`}
-            >
-              {amenity}
-            </button>
-          </div>
-        )).reverse()}
+        {selectedAddress?.amenities
+          ?.map((amenity, i) => (
+            <div className="  relative " key={amenity}>
+              <button
+                className={`px-2 py-1 cursor-pointer rounded select-none whitespace-nowrap bg-white dark:bg-[#242428] border  dark:border dark:border-gray-500 text-sm font-normal`}
+              >
+                {amenity}
+              </button>
+            </div>
+          ))
+          .reverse()}
       </div>
       <div className="flex cursor-pointer items-center bg-transparent ">
         {" "}

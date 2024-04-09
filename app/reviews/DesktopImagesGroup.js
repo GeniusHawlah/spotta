@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import toast from "react-hot-toast";
+import { errorToastOptions } from "./utils";
 
 function DesktopImagesGroup() {
   return (
@@ -19,7 +21,12 @@ function DesktopImagesGroup() {
             height={224}
           />
           {item === 4 && (
-            <button className="absolute text-white">VIEW MORE</button>
+            <button
+              onClick={() => toast("Not implemented.", errorToastOptions)}
+              className="absolute text-white"
+            >
+              VIEW MORE
+            </button>
           )}
         </div>
       ))}

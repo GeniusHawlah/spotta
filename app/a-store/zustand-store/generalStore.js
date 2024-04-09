@@ -3,14 +3,12 @@ import { ADDRESSES } from "../content-store/content-store";
 
 export const generalStore = create((set) => {
   return {
-    // user: { phone: "9078787646" },
-    // setUser: (user) => set(() => ({ user: user })),
-
     isLoggedIn: false,
     setIsLoggedIn: (value) => set(() => ({ isLoggedIn: value })),
 
     showPostReviewOverlay: false,
-    setShowPostReviewOverlay: (value) => set(() => ({ showPostReviewOverlay: value })),
+    setShowPostReviewOverlay: (value) =>
+      set(() => ({ showPostReviewOverlay: value })),
 
     showProfileDropdown: false,
     setShowProfileDropdown: (value) =>

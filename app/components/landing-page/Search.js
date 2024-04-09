@@ -2,7 +2,7 @@
 import { generalStore } from "@/app/a-store/zustand-store/generalStore";
 import { Icon } from "@iconify-icon/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import secureLocalStorage from "react-secure-storage";
 
 function Search() {
@@ -16,7 +16,6 @@ function Search() {
     setSelectedAddress,
     focusedSearchBar,
     setFocusedSearchBar,
-    selectedAddress,
   } = generalStore();
 
   function onChange(e) {
@@ -45,7 +44,6 @@ function Search() {
         const searchWords = searchTerm.toLowerCase().split(" ");
         return searchWords.some((word) => address.includes(word));
       });
-     
     }
 
     if (filteredAddresses.length > 0) {

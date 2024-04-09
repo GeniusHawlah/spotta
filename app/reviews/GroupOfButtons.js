@@ -2,9 +2,11 @@
 import { Icon } from "@iconify-icon/react";
 import React from "react";
 import { generalStore } from "../a-store/zustand-store/generalStore";
+import toast from "react-hot-toast";
+import { errorToastOptions } from "./utils";
 
 function GroupOfButtons() {
-const {setShowPostReviewOverlay} = generalStore()
+  const { setShowPostReviewOverlay } = generalStore();
 
   return (
     <div className="flex items-center gap-x-4">
@@ -15,14 +17,17 @@ const {setShowPostReviewOverlay} = generalStore()
         LEAVE A REVIEW
       </button>
 
-      <button className="flex justify-center items-center rounded border border-the-blue bg-white text-the-blue dark:bg-the-black dark:hover:bg-opacity-80 duration-300 p-[9px]">
+      <button
+        onClick={() => toast("Bookmark not implemented.", errorToastOptions)}
+        className="flex justify-center items-center rounded border border-the-blue bg-white text-the-blue dark:bg-the-black dark:hover:bg-opacity-80 duration-300 p-[9px]"
+      >
         <Icon
           icon="material-symbols-light:bookmark-outline"
           className="text-2xl"
         />
       </button>
 
-      <button className="flex justify-center items-center rounded border border-the-blue bg-white text-the-blue dark:bg-the-black dark:hover:bg-opacity-80 duration-300 p-[9px]">
+      <button onClick={() => toast("Share not implemented.", errorToastOptions)} className="flex justify-center items-center rounded border border-the-blue bg-white text-the-blue dark:bg-the-black dark:hover:bg-opacity-80 duration-300 p-[9px]">
         <Icon
           icon="material-symbols-light:share-outline"
           className="text-2xl"

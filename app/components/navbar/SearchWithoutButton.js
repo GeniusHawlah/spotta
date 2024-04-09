@@ -9,14 +9,11 @@ function SearchWithoutButton() {
   const router = useRouter();
 
   const {
-    reviews,
-    setReviews,
     searchTerm,
     addressList,
     setSearchTerm,
     setSearchSuggestions,
     searchSuggestions,
-    isLoggedIn,
     setFocusedSearchBar,
     focusedSearchBar,
     setSelectedAddress,

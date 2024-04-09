@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { generalStore } from "../a-store/zustand-store/generalStore";
 import toast from "react-hot-toast";
-import { toastOptions } from "./utils";
+import { errorToastOptions } from "./utils";
 
 function ReviewItem() {
   const [selectedReviewID, setSelectedReviewID] = useState();
@@ -35,7 +35,7 @@ function ReviewItem() {
   return (
     <div>
       {selectedAddress.reviews.map((review, i) => (
-        <div 
+        <div
           key={review?.id}
           onMouseOver={() => setSelectedReviewID(review?.id)}
           onTouchStart={() => setSelectedReviewID(review?.id)}
@@ -73,12 +73,22 @@ function ReviewItem() {
           {/* //>Line 3 */}
           <div className="flex gap-x-6 mt-3">
             {/* //>Like */}
-            <button className="flex gap-x-1 items-center text-center">
-              <Icon icon="uiw:like-o" className="text-2xl text-[#0d2159] dark:text-blue-300" />
+            <button
+              onClick={() =>
+                toast("Comment like not implemented.", errorToastOptions)
+              }
+              className="flex gap-x-1 items-center text-center"
+            >
+              <Icon
+                icon="uiw:like-o"
+                className="text-2xl text-[#0d2159] dark:text-blue-300"
+              />
               <span className="text-sm">{review?.like}</span>
             </button>
             {/* //>Dislike */}
-            <button className="flex gap-x-1 items-center text-center">
+            <button   onClick={() =>
+                toast("Comment dislike not implemented.", errorToastOptions)
+              } className="flex gap-x-1 items-center text-center">
               <Icon
                 flip="vertical"
                 icon="uiw:like-o"
@@ -116,7 +126,9 @@ function ReviewItem() {
                 className="border-none focus:ring-0 bg-transparent w-full text-sm"
                 placeholder="Add a comment"
               />
-              <button className="duration-300 hover:bg-opacity-80 px-3 py-1 rounded bg-the-blue text-white font-medium text-sm lg:text-base">
+              <button   onClick={() =>
+                toast("Posting not implemented.", errorToastOptions)
+              } className="duration-300 hover:bg-opacity-80 px-3 py-1 rounded bg-the-blue text-white font-medium text-sm lg:text-base">
                 POST
               </button>
             </div>

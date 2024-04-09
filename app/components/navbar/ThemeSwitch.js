@@ -2,8 +2,6 @@ import React from "react";
 import { Icon } from "@iconify-icon/react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import Image from "next/image";
-
 
 function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
@@ -12,7 +10,10 @@ function ThemeSwitch() {
 
   if (!mounted)
     return (
-        <Icon icon="akar-icons:box" className="text-2xl text-white invisible mr-4" />
+      <Icon
+        icon="akar-icons:box"
+        className="text-2xl text-white invisible mr-4"
+      />
     );
 
   if (resolvedTheme === "light") {

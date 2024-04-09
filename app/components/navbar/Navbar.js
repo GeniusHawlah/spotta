@@ -15,7 +15,6 @@ function Navbar() {
   const {
     isLoggedIn,
     setIsLoggedIn,
-    addressList,
     setAddressList,
     setSelectedAddress,
     showProfileDropdown,

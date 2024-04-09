@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { generalStore } from "../a-store/zustand-store/generalStore";
-import { Icon } from "@iconify-icon/react";
 import GroupOfButtons from "./GroupOfButtons";
 import Amenities from "./Amenities";
 import ReviewList from "./ReviewList";
@@ -34,9 +33,11 @@ function Reviews() {
             <p className="mt-1">
               <span className="text-xs sm:text-base font-semibold">{`"${selectedAddress?.reviews?.length}"`}</span>{" "}
               <span className="font-medium text-xs sm:text-base">Reviews</span>{" "}
-              {/* <span className="font-medium text-xs sm:text-base">
-                (People are raving about the selected location)
-              </span> */}
+              {selectedAddress?.reviews?.length > 3 && (
+                <span className="font-medium text-xs sm:text-base">
+                  (People are raving about the selected location)
+                </span>
+              )}
             </p>
           </div>
         )}

@@ -19,7 +19,7 @@ function InvalidAddress() {
         onClick={() => router.push("/")}
         className="px-10 py-3 mt-4 bg-the-blue rounded text-white hover:bg-opacity-80 duration-400 whitespace-nowrap text-sm sm:text-base font-medium"
       >
-        FIND MORE PLACES
+        TRY ANOTHER ADDRESS
       </button>
     </div>
   );

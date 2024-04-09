@@ -30,17 +30,17 @@ function PostReviewOverlay() {
   } = generalStore();
   const [showAmenities, setShowAmenities] = useState(false);
   const [review, setReview] = useState({
-    id: Date.now(),
+    id: "",
     author: "",
     like: 0,
     dislike: 0,
     comments: 0,
-    time: formatDate(),
+    time: "",
     rating: 1,
     content: "",
   });
 
-  const [selectedAmenities, setSelectedAmenities] = useState([""]);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [reservedAuthorValue, setReservedAuthorValue] = useState();
   const [anonymous, setAnonymous] = useState(false);
 
@@ -81,7 +81,11 @@ function PostReviewOverlay() {
       addressToReview.amenities = [...addressAmenitiesSet];
     }
 
-    addressToReview.reviews.unshift(review);
+    addressToReview.reviews.unshift({
+      ...review,
+      time: formatDate(),
+      id: Date.now(),
+    });
 
     const updatedAddressList = _.cloneDeep(temporalAddressList);
 
@@ -94,7 +98,15 @@ function PostReviewOverlay() {
     secureLocalStorage.setItem("selectedAddress", updatedAddress);
     secureLocalStorage.setItem("addressList", updatedAddressList);
     setSelectedAmenities([]);
+    setReview((currentState) => ({
+      ...currentState,
+      author: "",
+      rating: 1,
+      content: "",
+    }));
+    setAnonymous(false);
     setShowPostReviewOverlay(false);
+
     toast("Review Submitted", toastOptions);
   }
 
@@ -153,7 +165,9 @@ function PostReviewOverlay() {
               key={rating}
               icon="material-symbols-light:star"
               className={`text-2xl cursor-pointer -ml-2 ${
-                review?.rating >= rating ? "text-yellow-300" : "text-yellow-100"
+                review?.rating >= rating
+                  ? "text-yellow-300"
+                  : "text-yellow-100 dark:text-gray-50"
               }`}
             />
           ))}
@@ -163,7 +177,7 @@ function PostReviewOverlay() {
         <p className="text-sm font-medium mt-4">Your Name</p>
         <input
           disabled={anonymous}
-          defaultValue={review?.author}
+          value={review?.author}
           type="name"
           name="author"
           onChange={(e) => {
