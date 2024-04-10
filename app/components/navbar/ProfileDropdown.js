@@ -46,7 +46,7 @@ function ProfileDropdown() {
         Profile
       </button>
       <button
-        onClick={() => router.push("/reviews")}
+        onClick={() => {onReviewsClicked()}}
         className="p-2 select-none hover:bg-gray-50 dark:hover:bg-opacity-20 duration-300 rounded dark:shadow-white text-left-white shadow-sm"
       >
         Reviews
@@ -55,7 +55,7 @@ function ProfileDropdown() {
         onClick={() => {
           setIsLoggedIn(false);
           secureLocalStorage.removeItem("isLoggedIn");
-          onReviewsClicked()
+          router.push("/");
         }}
         className="p-2 select-none hover:bg-gray-50 dark:hover:bg-opacity-20 duration-300 rounded dark:shadow-white text-left-white shadow-sm text-left"
       >
